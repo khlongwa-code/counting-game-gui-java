@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -57,5 +58,22 @@ public class CountingGame {
         scorePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 40));
 
         return scorePanel;
+    }
+
+    private JPanel getButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(3, 3, 10, 10));
+
+        for (int i = 0; i < 9; i++) {
+            buttons[i] = new JButton("" + (i+1));
+            buttons[i].setBackground(Color.WHITE);
+            buttons[i].addActionListener(buttonActionListener(buttons[i]));
+            buttonPanel.add(buttons[i]);
+        }
+        randomButtons();
+
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
+
+        return buttonPanel;
     }
 }
