@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -75,5 +76,24 @@ public class CountingGame {
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
 
         return buttonPanel;
+    }
+
+    private void randomButtons() {
+        Random random = new Random();
+        boolean[] setButtons = new boolean[9];
+
+        for (int i = 0; i < 9; i++) {
+            setButtons[i] = false;
+        }
+
+        for (int i = 0; i < 9; i++) {
+            int num = random.nextInt(9);
+
+            while (setButtons[num]) {
+                num = random.nextInt(9);
+            }
+            buttons[i].setText("" + (num + 1));
+            setButtons[num] = true;
+        }
     }
 }
